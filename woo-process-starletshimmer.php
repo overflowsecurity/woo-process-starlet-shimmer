@@ -128,7 +128,7 @@ class woo_process_starletshimmer{
 
             $parent_id = $id;
 
-            $attr_value = str_replace(' ', '', $attr_value);
+            $attr_value = str_replace(' | ', '|', $attr_value);
             $attr_value = explode("|", $attr_value);
             foreach($attr_value as $type_var){
                 
