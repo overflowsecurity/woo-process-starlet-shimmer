@@ -78,7 +78,7 @@ class woo_process_starletshimmer{
 
             if($var_type == 1){
                 $colors = "";
-                $var_type = "color";
+                $var_type = "Color";
                 $query_color = "SELECT * FROM local.wp_postmeta WHERE meta_key = 'var_color' and post_id = " . $id . ";";
                 $colors_array = $wpdb->get_results($query_color);
 
@@ -90,7 +90,7 @@ class woo_process_starletshimmer{
                 }
             }elseif($var_type == 2){
                 $variations = "";
-                $var_type = "variation";
+                $var_type = "Variation";
                 $query_variation = "SELECT * FROM local.wp_postmeta WHERE meta_key = 'var_variation' and post_id = " . $id . ";";
                 $variation_array = $wpdb->get_results($query_variation);
 
@@ -103,10 +103,10 @@ class woo_process_starletshimmer{
             }
 
             //Got to get the color options per peice 
-            if($var_type == "color"){
+            if($var_type == "Color"){
                 $colors = substr_replace($colors ,"",-3);
                 $attr_value = $colors;
-            }elseif($var_type == "variation"){
+            }elseif($var_type == "Variation"){
                 $variations = substr_replace($variations ,"",-3);
                 $attr_value = $variations;
             }
@@ -133,7 +133,7 @@ class woo_process_starletshimmer{
             foreach($attr_value as $type_var){
                 
     
-                if($attr_label == "color"){
+                if($attr_label == "Color"){
                     
                     unset($meta_array);
                     $meta_array = explode(",", $meta);
@@ -169,7 +169,7 @@ class woo_process_starletshimmer{
                     
     
     
-                }elseif($attr_label == "variation"){
+                }elseif($attr_label == "Variation"){
                     unset($meta_array);
                     $meta_array = explode(",", $meta);
 
