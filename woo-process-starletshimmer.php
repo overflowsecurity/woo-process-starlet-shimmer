@@ -54,7 +54,7 @@ class woo_process_starletshimmer{
 
         global $wpdb;
 
-        $query = "SELECT DISTINCT post_id FROM local.wp_postmeta where meta_key = 'var_color' OR meta_key = 'var_variation'" . ";";
+        $query = "SELECT DISTINCT post_id FROM wp_postmeta where meta_key = 'var_color' OR meta_key = 'var_variation'" . ";";
         $product_ids = $wpdb->get_results($query);
 
         //var_dump($product_ids);
@@ -63,23 +63,23 @@ class woo_process_starletshimmer{
 
             $id = $id->post_id;
 
-            $query = "SELECT * FROM local.wp_posts WHERE ID = " . $id . ";";
+            $query = "SELECT * FROM wp_posts WHERE ID = " . $id . ";";
             $post_data = $wpdb->get_row($query);
 
             $post_title = $post_data->post_title;
 
-            $query = "SELECT meta_value FROM local.wp_postmeta WHERE post_id = " . $id . " AND meta_key = 'var_type'" . ";";
+            $query = "SELECT meta_value FROM wp_postmeta WHERE post_id = " . $id . " AND meta_key = 'var_type'" . ";";
             $var_type = $wpdb->get_row($query);
 
             $var_type = $var_type->meta_value;
 
-            $query = "SELECT * FROM local.wp_postmeta WHERE post_id=" . $id . ";";
+            $query = "SELECT * FROM wp_postmeta WHERE post_id=" . $id . ";";
             $postmeta_data = $wpdb->get_results($query);
 
             if($var_type == 1){
                 $colors = "";
                 $var_type = "Color";
-                $query_color = "SELECT * FROM local.wp_postmeta WHERE meta_key = 'var_color' and post_id = " . $id . ";";
+                $query_color = "SELECT * FROM wp_postmeta WHERE meta_key = 'var_color' and post_id = " . $id . ";";
                 $colors_array = $wpdb->get_results($query_color);
 
                 foreach($colors_array as $meta){
@@ -91,7 +91,7 @@ class woo_process_starletshimmer{
             }elseif($var_type == 2){
                 $variations = "";
                 $var_type = "Variation";
-                $query_variation = "SELECT * FROM local.wp_postmeta WHERE meta_key = 'var_variation' and post_id = " . $id . ";";
+                $query_variation = "SELECT * FROM wp_postmeta WHERE meta_key = 'var_variation' and post_id = " . $id . ";";
                 $variation_array = $wpdb->get_results($query_variation);
 
                 foreach($variation_array as $meta){
@@ -147,7 +147,7 @@ class woo_process_starletshimmer{
                    'post_type'    => 'product_variation'
                    );
                    
-                   $query = "SELECT meta_value FROM local.wp_postmeta WHERE post_id = " . $parent_id .  " and meta_value LIKE '%" . $type_var . ",%'" . ";";
+                   $query = "SELECT meta_value FROM wp_postmeta WHERE post_id = " . $parent_id .  " and meta_value LIKE '%" . $type_var . ",%'" . ";";
                    $query_result = $wpdb->get_row($query);
                    $results = $query_result->meta_value;
                    $results = explode(",", $results);
@@ -181,7 +181,7 @@ class woo_process_starletshimmer{
                         'post_type'    => 'product_variation'
                     );
     
-                    $query = "SELECT meta_value FROM local.wp_postmeta WHERE post_id = " . $parent_id .  " and meta_value LIKE '%" . $type_var . ",%'" . ";";
+                    $query = "SELECT meta_value FROM wp_postmeta WHERE post_id = " . $parent_id .  " and meta_value LIKE '%" . $type_var . ",%'" . ";";
                     $query_result = $wpdb->get_row($query);
                     $results = $query_result->meta_value;
                     $results = explode(",", $results);
@@ -212,7 +212,7 @@ class woo_process_starletshimmer{
         function cleanup(){
             //Cleanup!
             global $wpdb;
-            $query = 'SELECT DISTINCT meta_id from local.wp_postmeta WHERE meta_key = "var_color" OR meta_key = "var_variation" OR meta_key = "var_type";';
+            $query = 'SELECT DISTINCT meta_id from wp_postmeta WHERE meta_key = "var_color" OR meta_key = "var_variation" OR meta_key = "var_type";';
             $meta_id = $wpdb->get_results($query);
             $table = "wp_postmeta";
         
