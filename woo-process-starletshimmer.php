@@ -43,7 +43,7 @@ class woo_process_starletshimmer{
         <br></br>
         <br></br>
         <br></br>
-        <button id="send_button" type="button">Process Images</button><div id="send_message"></div>
+        <button id="send_button" type="button">Process Starlet Shimmer</button><div id="send_message"></div>
         <div id="print_out"></div>
 
 
