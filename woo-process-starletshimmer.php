@@ -3,7 +3,9 @@
     Plugin Name: Woocommerce Process Starlet Shimmer
     description: This plugin processes custom post meta to add product variations for Paparazzi Starlet Shimmer Jewelry
     Author: Justin Tharpe
-    Version: 0.0.1
+    Version: 1.0.0
+    Tested Up To: 5.4.1
+    WC tested up to: 4.1.0
 */
 
 
